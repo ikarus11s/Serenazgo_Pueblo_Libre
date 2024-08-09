@@ -13,7 +13,7 @@ url = "https://docs.google.com/spreadsheets/d/1gS6ZS6lS7Mc5B4TFI8HEK80xq4LANS6nU
 
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-data = conn.read(spreadsheet=url, usecols=[:])
+data = conn.read(spreadsheet=url)
 
 
 
