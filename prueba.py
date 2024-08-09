@@ -6,15 +6,19 @@ Created on Fri Aug  9 17:32:18 2024
 """
 
 
-
-# example/st_app.py
-
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 
-url = "https://docs.google.com/spreadsheets/d/1gS6ZS6lS7Mc5B4TFI8HEK80xq4LANS6nU2O8V8-hEC8/edit?usp=sharing"
+# Create a connection object.
+conn = st.connection("gsheets", type=GSheetsConnection)
 
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+df = conn.read(
+    worksheet="Hoja 1",
+    ttl="10m",
+    usecols=[0, 7],
+    nrows=20,
+)
 
-data = conn.read(spreadsheet=url, usecols=[0, 1])
-st.dataframe(data)
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.name} has a :{row.pet}:")
