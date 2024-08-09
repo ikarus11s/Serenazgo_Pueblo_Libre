@@ -2,4 +2,4 @@ streamlit
 gspread
 oauth2client
 pandas
-streamlit-gsheets
+streamlit_gsheets
