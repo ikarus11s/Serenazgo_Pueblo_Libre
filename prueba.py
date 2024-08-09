@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Aug  9 16:30:55 2024
-
-@author: MNahui
-"""
-
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -31,7 +24,7 @@ def main():
         # Leer datos y convertir a DataFrame
         data = pd.DataFrame(sheet.get_all_records())
         st.write("Datos leídos desde Google Sheets:")
-        st.write(data)
+        st.dataframe(data)  # Usar st.dataframe() para una vista interactiva
         
         # Escribir datos
         if st.button('Agregar datos'):
