@@ -3,8 +3,7 @@
 Created on Fri Aug  9 17:32:18 2024
 
 @author: MNahui
-"""
-import streamlit as st
+"""import streamlit as st
 import pandas as pd
 
 # Definimos los parámetros de configuración de la aplicación
@@ -28,7 +27,15 @@ url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid=
 def Cargar_Datos(url):
     dfDatos = pd.read_csv(url)
     st.dataframe(dfDatos,use_container_width=True)
-    st.map(dfDatos[['Latitud','Longitud']])
+    
+
+@st.experimental_fragment(run_every=2)
+def Cargar_mapa(url):
+    dfDatos = pd.read_csv(url)
+    coordenadas = dfDatos[['Latitud','Longitud']]
+    coordenadas.columns = ['lat','lon']
+    st.map(coordenadas,size = [1.0] ,color = '#00ff00'  )
 
 
-Cargar_Datos(url)
+Cargar_mapa(url)
+
