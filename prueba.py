@@ -4,21 +4,46 @@ Created on Fri Aug  9 17:32:18 2024
 
 @author: MNahui
 """
-
-
+    
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
+import pandas as pd
 
-# Create a connection object.
-conn = st.connection("gsheets", type=GSheetsConnection)
-
-df = conn.read(
-    worksheet="Hoja 1",
-    ttl="10m",
-    usecols=[0, 7],
-    nrows=20,
+# Definimos los parámetros de configuración de la aplicación
+st.set_page_config(
+    page_title="Demo carga datos desde Google Sheets", #Título de la página
+    page_icon="📊", # Ícono
+    layout="wide", # Forma de layout ancho o compacto
+    initial_sidebar_state="expanded" # Definimos si el sidebar aparece expandido o colapsado
 )
 
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.name} has a :{row.pet}:")
+
+gsheetid='1gS6ZS6lS7Mc5B4TFI8HEK80xq4LANS6nU2O8V8-hEC8'
+sheetid='0'
+
+
+url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
+st.write(url)
+'''
+sheetid='117226359'
+url2 = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
+st.write(url2)
+url2 = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
+sheetid='1884410336'
+url3 = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
+st.write(url3)
+
+'''
+
+dfDatos = pd.read_csv(url)
+st.dataframe(dfDatos,use_container_width=True)
+
+
+
+@st.experimental_fragment(run_every=2)
+def cargarVentasCategoria(url):
+    dfDatos = pd.read_csv(url)
+    st.dataframe(dfDatos,use_container_width=True)
+
+
+
+cargarVentasCategoria(url)
