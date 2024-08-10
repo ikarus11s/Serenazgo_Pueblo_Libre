@@ -24,13 +24,13 @@ url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid=
 
 
 
-@st.experimental_fragment(run_every=5)
+@st.experimental_fragment(run_every=15)
 def Cargar_Datos(url):
     dfDatos = pd.read_csv(url)
     st.dataframe(dfDatos,use_container_width=True)
     
 
-@st.experimental_fragment(run_every=5)
+@st.experimental_fragment(run_every=15)
 def Cargar_mapa(url):
     dfDatos = pd.read_csv(url)
     coordenadas = dfDatos[['Latitud','Longitud']]
