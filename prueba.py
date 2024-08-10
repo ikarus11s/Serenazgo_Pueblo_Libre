@@ -32,12 +32,12 @@ def cargar_datos_gsheet(url):
 def mostrar_mapa(df):
     """Muestra un mapa con los puntos de latitud y longitud del DataFrame."""
     # Crear un mapa centrado en las coordenadas medias
-    m = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=14, tiles='CartoDB positron')
+    m = folium.Map(location=[df['Latitud'].mean(), df['Longitud'].mean()], zoom_start=14, tiles='CartoDB positron')
 
     # Agregar puntos al mapa
     for idx, row in df.iterrows():
         folium.Marker(
-            location=[row['lat'], row['lon']],
+            location=[row['Latitud'], row['Longitud']],
             popup=f'Fila: {idx + 1}',  # Número de fila
             icon=folium.Icon(color='blue')
         ).add_to(m)
