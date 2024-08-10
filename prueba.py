@@ -22,17 +22,7 @@ sheetid='0'
 
 
 url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
-st.write(url)
-'''
-sheetid='117226359'
-url2 = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
-st.write(url2)
-url2 = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
-sheetid='1884410336'
-url3 = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}&format'
-st.write(url3)
 
-'''
 
 dfDatos = pd.read_csv(url)
 st.dataframe(dfDatos,use_container_width=True)
