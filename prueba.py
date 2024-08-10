@@ -3,7 +3,8 @@
 Created on Fri Aug  9 17:32:18 2024
 
 @author: MNahui
-"""import streamlit as st
+"""
+import streamlit as st
 import pandas as pd
 
 # Definimos los parámetros de configuración de la aplicación
