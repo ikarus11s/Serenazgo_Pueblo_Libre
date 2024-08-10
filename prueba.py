@@ -45,7 +45,6 @@ def mostrar_mapa(df):
     # Renderizar el mapa en Streamlit
     st.write(m._repr_html_(), unsafe_allow_html=True)
 
-@st.experimental_memo
 def obtener_datos():
     """Obtiene y muestra los datos y el mapa."""
     df = cargar_datos_gsheet(url)
